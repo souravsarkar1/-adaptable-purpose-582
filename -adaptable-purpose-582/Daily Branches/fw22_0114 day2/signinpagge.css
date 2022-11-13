@@ -1,0 +1,88 @@
+#cont{
+    text-align: center;
+    width: 40%;
+    margin: auto;
+    height: 600px;
+    margin-top: 50px;
+    background-color: rgb(255, 255, 255);
+    padding-bottom: 40px;
+}
+
+#input{
+    width: 98%;
+    height: 38px;
+    background-color: rgb(220, 246, 246);
+    border: none;
+}
+button{
+    width: 98%;
+    height: 38px;
+    background-color: rgb(85, 164, 221);
+    border: none;
+    
+}
+button:hover{
+    background-color: gray;
+
+}
+p{
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    color: olivedrab;
+}
+h2{
+    font-size: 30px;
+    color: rgb(110, 96, 96);
+}
+h3{
+    color: rgb(82, 98, 113);
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#countryCode{
+    width: 50%;
+    height: 38px;
+    background-color: rgb(85, 164, 221);
+    border: none;
+    text-align: center;
+}
+#inputUserName{
+    width: 98%;
+    height: 38px;
+    background-color: rgb(220, 246, 246);
+    border: none;
+}
+#inputmail{
+    width: 98%;
+    height: 38px;
+    background-color: rgb(220, 246, 246);
+    border: none;
+}
+#inputEmail{
+    width: 98%;
+    height: 38px;
+    background-color: rgb(220, 246, 246);
+    border: none;
+}
+#inputPassword{
+    width: 98%;
+    height: 38px;
+    background-color: rgb(220, 246, 246);
+    border: none;
+}
+#mblinput{
+    width: 98%;
+    height: 38px;
+    background-color: rgb(220, 246, 246);
+    border: none;
+}
+#passinput{
+    width: 98%;
+    height: 38px;
+    background-color: rgb(220, 246, 246);
+    border: none;
+}

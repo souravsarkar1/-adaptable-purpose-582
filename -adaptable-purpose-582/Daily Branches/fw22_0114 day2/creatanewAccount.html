@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="signinpagge.css">
+    <style>
+        #submit{
+            background-color: blueviolet;
+            margin: auto;
+            text-align: center;
+            padding: 15px 15px;
+            font-size: 20px;
+        }
+        a{
+    text-decoration: none;
+    color: rgb(60, 26, 233);
+}
+    </style>
+</head>
+<body>
+    <div id="cont">
+        <h2>Create An Account</h2>
+        <p>Welcome to Anthropologie! It's quick and easy to set up an account.</p>
+        <div  id="myForm" class="login">
+            <form action="">
+                <br>
+                <h3>SIGN UP</h3><br><br>
+                <!-- Input for user name -->
+                <input class="inputs" type="text" id="inputUserName" placeholder="Enter Full Name" required><br>
+                <br>
+                <!-- Input for user email -->
+                <input class="inputs" type="email" id="inputEmail" placeholder="Enter E-mail Address" required><br>
+                <br>
+                <!-- Input of users password -->
+                <input class="inputs" type="password" name="password" id="inputPassword" placeholder="Enter your password" required><br>
+                <br><br><br>
+                <!-- Button for singn in -->
+                <button id="signupButton" type="submit">Sign Up</button>
+                <br><br>
+                <!-- Button for login -->
+                <!-- <button id="loginButton" type="submit">Longin</button><br><br> -->
+                <!-- <button onclick="window.location.href='https://w3docs.com';"></button> -->
+                <p>By continuing, I accept TCP-bigbasket's Terms and Conditions and Privacy Policy.</p>
+            
+            </form>
+        </div>
+        <hr>
+        <br>
+        <br>
+        <br>
+        <!-- <input type="checkbox" id="showPass">Sign me up to receive Anthropologie offers, promotions and other commercial messages. By creating an account, I agree to Anthropologie's Terms of Service and Privacy Policy. I may unsubscribe at any time. Creating an account will not enroll you in SMS marketing. -->
+        <p>By creating an account, you agree to Anthropologie's <a id="term" href="terms.html">terms</a> of use and privacy policy. Landlines, VoIP, and prepaid phones are not supported. Standard message & data rates may apply. Message frequency may vary. Reply HELP for help, and STOP to cancel. <a href="contractus.html">Contact us</a> for more information.</p>
+        <h2>Already Have an Account?</h2>
+       <a href="signUp.html"> <button id="loginButton" type="submit">Longin</button><br><br></a>
+
+    </div>
+</body>
+</html>
+
+<script>
+
+    let allUserData = JSON.parse(localStorage.getItem("allUserData")) || [];
+    let inputUserName = document.querySelector('#inputUserName');
+    let inputEmail = document.querySelector('#inputEmail');
+    let inputPassword = document.querySelector('#inputPassword');
+    let loginButton = document.querySelector('#loginButton');
+    let signupButton = document.querySelector('#signupButton');
+    // inputUserName.style.display = "none";
+    loginButton.addEventListener('click', function(e){
+        e.preventDefault();
+        var myWindow = window.open("LogInPage.html", "_self");
+    })
+
+
+    function isUserAllReadyExsist() {
+        let flag = false;
+        let arr = allUserData;
+        //console.log(arr);
+        if(arr.length == 0){
+            return false ;
+        }
+        let userEmail = inputEmail.value;
+        let userPassword = inputPassword.value;
+
+        arr.forEach(element => {
+                if (element.userPassword == userPassword && element.userEmail == userEmail) {
+                    flag = true;
+                    return;
+                }
+                
+        });
+        return flag;
+    }
+
+    signupButton.addEventListener('click', function(e){
+         e.preventDefault();
+        //  inputUserName.style.display = "block";
+            let userName = inputUserName.value;
+            let userEmail = inputEmail.value;
+            let userPassword = inputPassword.value;
+        if(userName != ''){
+            if(userEmail != ''){
+                if(userPassword != ''){
+                    if(isUserAllReadyExsist()) {
+                        alert("Your are already rgister"); 
+                    }else{
+                        let boj = {
+                            "userName" : userName,
+                            "userEmail" : userEmail,
+                            "userPassword" : userPassword
+                        }
+                        allUserData.push(boj);
+                        localStorage.setItem("allUserData", JSON.stringify(allUserData));
+                        alert("You are succesfully SignUp")
+                    }
+                    }else{
+                        alert("Please enter Password");
+                    }
+                }else{
+                alert("Please enter email address");
+            }
+         }else{
+            alert("Please enter Full name");
+         }
+        
+    })
+
+
+</script>

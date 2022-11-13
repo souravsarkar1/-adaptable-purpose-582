@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setpssword</title>
+    <link rel="stylesheet" href="signinpagge.css">
+</head>
+<body>
+    <div id="cont">
+        <h1>Sign In</h1>
+    <p>Sign in so you can save items to your wishlists, track your orders, and check out faster!</p>
+    <h3>Password*</h3>
+    <input type="password" name="" id="input" placeholder="enter the password">
+    <input type="checkbox" id="showPass">Show Password
+    <button>NEXT</button>
+    <p id="forgetPass"><a href="forgetpassword.html">Forget Password?</a></p>
+    <hr>
+    <h1>Sign Up</h1>
+    <p>Welcome! It's quick and easy to set up an account</p>
+    <button>CREAT A NEW ACCOUNT</button>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    document.querySelector("#showPass").addEventListener("click",function(){
+        var x = document.getElementById("input");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+    })
+
+   
+</script>

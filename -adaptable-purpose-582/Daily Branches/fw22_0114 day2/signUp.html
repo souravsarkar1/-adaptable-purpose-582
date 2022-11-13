@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .login{
+            margin: auto;
+            margin-top: 20px;
+            opacity: 1;
+            width: 300px;
+            height: 500px;
+            background-color: white;
+            text-align: center;
+        }
+        .inputs{
+            width: 290px;
+            height: 40px;
+            border: none;
+            
+        }
+        #inputMobileNumber{
+            display: none;
+        }
+        #signupButton{
+            color: white;
+            font-size: 20px;
+            width: 290px;
+            height: 60px;
+            border-radius: 5px;
+            border:1px solid black;
+            background-color: rgb(27, 170, 196);
+        }
+        #loginButton{
+            color: white;
+            font-size: 20px;
+            width: 290px;
+            height: 60px;
+            border-radius: 5px;
+            border:1px solid black;
+            background-color: rgb(45, 188, 216);
+            
+            
+        }
+        p{
+            font-size: 10px;
+        }
+        h3{
+            color: rgb(106, 23, 132);
+        }
+        #myForm{
+            text-align: center;
+            width: 40%;
+            margin: auto;
+            height: 600px;
+            margin-top: 50px;
+            background-color: rgb(255, 255, 255);
+            padding-bottom: 40px;
+        }
+        #inputUserName{
+            width: 98%;
+    height: 38px;
+    background-color: rgb(220, 246, 246);
+    border: none;
+        }
+        #creatanewAccount{
+            background-color: aquamarine;
+            width: 90%;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div  id="myForm" class="login">
+        <form action="">
+            <br>
+            <h3>LOGIN</h3><br><br><br>
+            <!-- Input for user name -->
+            <input class="inputs" type="text" id="inputUserName" placeholder="Enter Full Name" required><br>
+            <!-- Input for user email -->
+            <input class="inputs" type="email" id="inputEmail" placeholder="Enter E-mail Address" required><br>
+            <!-- Input of users password -->
+            <input class="inputs" type="password" name="password" id="inputPassword" placeholder="Enter your password" required><br><br><br><br>
+            <!-- Button for login -->
+            <button id="loginButton" type="submit">Longin</button><br><br>
+            <!-- Button for singn in -->
+            <button id="signupButton" type="submit">Sign Up</button>
+            <br><br>
+            <!-- <button onclick="window.location.href='https://w3docs.com';"></button> -->
+            <p>By continuing, I accept TCP-bigbasket's Terms and Conditions and Privacy Policy.</p>
+        
+        </form>
+        <h3>DON'T HAVE ANY ACCOUT CREAT A NEW ACCOUT</h3>
+       <a href="creatanewAccount.html"> <button id="creatanewAccount">CREAT A NEW ACCOUNT</button></a>
+    </div>
+
+</body>
+</html>
+<script>
+
+    let allUserData = JSON.parse(localStorage.getItem("allUserData")) || [];
+    let inputUserName = document.querySelector('#inputUserName');
+    let inputEmail = document.querySelector('#inputEmail');
+    let inputPassword = document.querySelector('#inputPassword');
+    let loginButton = document.querySelector('#loginButton');
+    let signupButton = document.querySelector('#signupButton');
+    inputUserName.style.display = "none";
+    loginButton.addEventListener('click', function(e){
+         e.preventDefault();
+         inputUserName.style.display = "none";
+        let userEmail = inputEmail.value;
+        let userPassword = inputPassword.value;
+        if(userEmail != ''){
+            if(userPassword != ''){
+                let arr = allUserData;
+                if(arr.length == 0){
+                    alert("User not found Please register!");
+                }
+                let emailFlag = false;
+                let passwordFlag = false;
+                arr.forEach(element => {
+                    if (element.userEmail == userEmail) {
+                        emailFlag = true;
+                        if (element.userPassword == userPassword) {
+                            passwordFlag = true;
+                        }
+                    }
+                        
+                });
+                if (emailFlag) {
+                    if (passwordFlag) {
+                        var myWindow = window.open("HomePage.html", "_self");
+                        alert('You are succesfully login');
+                    }else{
+                        alert("Wrong Password");
+                    }
+                }else{
+                    alert("Wrong E-mail");
+                }
+
+
+                }else{
+                    alert("Please enter Password");
+                }
+            }else{
+            alert("Please enter email address");
+        }
+    })
+
+
+    signupButton.addEventListener('click', function(e){
+         e.preventDefault();
+         var myWindow = window.open("SignUpPage.html", "_self");
+    })
+
+
+</script>

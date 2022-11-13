@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <style>
+        #con{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            grid-template-rows: repeat(10,1fr);
+            grid-gap: 20px;
+            height: auto;
+            row-gap: 100px;
+        }
+        #con>div>img{
+            height: 40%;
+            width: 100%;
+        }
+        #con>div{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            height: 500px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div id="con"></div>
+</body>
+</html>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script>
+    fetch("https://636a3a78b10125b78fd476bc.mockapi.io/products").then((res)=>res.json()).then((data)=>displayCard(data)).catch((err)=>alert(err));
+
+
+    function displayCard(data){
+
+        data.forEach(element => {
+            let div = document.createElement("div");
+
+
+        let img = document.createElement("img");
+        img.setAttribute("src",element.avatar);
+
+
+        let title = document.createElement("h2");
+        title.innerText=element.title;
+
+
+        let price = document.createElement("h4");
+        price.innerText= "$  " + element.Price;
+
+
+        let dis = document.createElement("p");
+        dis.innerText=element.Description;
+
+
+        div.append(img,title,price,dis);
+
+
+        document.querySelector("#con").append(div);
+
+
+        });
+        
+    }
+</script>
